@@ -8,6 +8,10 @@ A clean interface to the [skrollr](https://github.com/Prinzhorn/skrollr) animati
 - [jquery](http://jquery.com/) - want to eventually remove this dependency
 - [skrollr](https://github.com/prinzhorn/skrollr) - not an explicit dependency (skrollr is never called within skrilla), but this is designed to work with skrollr, so you'll definitely need it.
 
+### Setup
+
+Find what you need inside the `dist/` directory. Also available on [npm](https://www.npmjs.org/package/skrilla) and [bower](http://bower.io/).
+
 ### Why should you care?
 
 First, familiarize yourself with how [skrollr](https://github.com/prinzhorn/skrollr) works. This is the main animation library doing the heavy lifting and is the main dependency of the project.
