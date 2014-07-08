@@ -29,12 +29,22 @@
     });
 
     describe('.beforeInit', function() {
-      it('is a before hook to .init', function () {
+      it('is executed when init is called', function () {
         var before_init_test = false
         var test = new Test
         test.beforeInit = function () { window.before_init_test = true }
         test.init()
         expect(window.before_init_test).to.equal(true)
+      })
+    });
+
+    describe('.afterInit', function() {
+      it('is executed when init is called', function () {
+        var after_init_test = false
+        var test = new Test
+        test.afterInit = function () { window.after_init_test = true }
+        test.init()
+        expect(window.after_init_test).to.equal(true)
       })
     });
   });

@@ -2,21 +2,20 @@ class Skrilla
   start: 0
   end: 0
   el: ''
-  fixed: false
   keyframes: {}
 
   constructor: (args) ->
     @[k] = v for k, v of args
-    if not @fixed || is_mobile
-      @duration = $(@el).height()
 
   beforeInit: ->
+
+  afterInit: ->
 
   init: ->
     @beforeInit()
     set_keyframes.call(@)
-    if @fixed then insert_placeholder.call(@)
     @set_arrow_listeners()
+    @afterInit()
 
   animate_to: (pos, opts) ->
     if not is_mobile
@@ -48,8 +47,3 @@ class Skrilla
     for prop, val of styles
       result += "#{prop}:#{val};"
     result
-
-  insert_placeholder = ->
-    $(@el)
-      .addClass('fixed')
-      .after("<div id='#{@el}-placeholder' style='height: #{@duration}px;'></div>")

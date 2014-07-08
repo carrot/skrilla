@@ -1,15 +1,13 @@
 var Skrilla;
 
 Skrilla = (function() {
-  var concat_styles, insert_placeholder, set_keyframes;
+  var concat_styles, set_keyframes;
 
   Skrilla.prototype.start = 0;
 
   Skrilla.prototype.end = 0;
 
   Skrilla.prototype.el = '';
-
-  Skrilla.prototype.fixed = false;
 
   Skrilla.prototype.keyframes = {};
 
@@ -19,20 +17,17 @@ Skrilla = (function() {
       v = args[k];
       this[k] = v;
     }
-    if (!this.fixed || is_mobile) {
-      this.duration = $(this.el).height();
-    }
   }
 
   Skrilla.prototype.beforeInit = function() {};
 
+  Skrilla.prototype.afterInit = function() {};
+
   Skrilla.prototype.init = function() {
     this.beforeInit();
     set_keyframes.call(this);
-    if (this.fixed) {
-      insert_placeholder.call(this);
-    }
-    return this.set_arrow_listeners();
+    this.set_arrow_listeners();
+    return this.afterInit();
   };
 
   Skrilla.prototype.animate_to = function(pos, opts) {
@@ -93,10 +88,6 @@ Skrilla = (function() {
       result += "" + prop + ":" + val + ";";
     }
     return result;
-  };
-
-  insert_placeholder = function() {
-    return $(this.el).addClass('fixed').after("<div id='" + this.el + "-placeholder' style='height: " + this.duration + "px;'></div>");
   };
 
   return Skrilla;
