@@ -4,7 +4,9 @@
   "description": "A clean Javscript interface for the skrollr animation library",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "gulp test",
+    "build": "gulp build",
+    "bower": "(cd test && bower install)"
   },
   "repository": {
     "type": "git",
@@ -27,11 +29,8 @@
     "gulp": "~3.8.2",
     "gulp-util": "~2.2.18",
     "mocha": "~1.20.1",
-    "gulp-mocha-phantomjs": "~0.3.0"
-  },
-  "scripts": {
-    "test": "gulp test",
-    "build": "gulp build",
-    "bower": "(cd test && bower install)"
+    "gulp-mocha-phantomjs": "~0.3.0",
+    "gulp-uglify": "~0.3.1",
+    "gulp-rename": "~1.2.0"
   }
 }

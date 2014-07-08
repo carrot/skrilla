@@ -3,8 +3,6 @@ Skrilla
 
 A clean interface to the [skrollr](https://github.com/Prinzhorn/skrollr) animation library. Use Javascript objects to manage skrollr animation modules in a more maintainable way.
 
-> **Note:** This project is in early development, and versioning is a little different. [Read this](http://markup.im/#q4_cRZ1Q) for more details.
-
 ### Dependencies
 
 - [jquery](http://jquery.com/) - want to eventually remove this dependency
@@ -28,6 +26,9 @@ class HeaderAnimation extends Skrilla
 
   beforeInit: ->
     console.log('this is executed right before the data attributes are applied')
+
+  afterInit: ->
+    console.log('this is executed right after the data attributes are applied')
 
   keyframes:
     'this':
