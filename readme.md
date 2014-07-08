@@ -64,6 +64,15 @@ skrollr.init()
 
 Calling `(new ElephantMosaic).init()` here will apply these keyframes onto the elements through the data attributes interface to skrollr. Once initialized, **it's up to you** to call `skrollr.init()`, this is for maximum flexibility. Later down the road, I may integrate this into Skrilla itself and add hooks for before skrollr is intiialized.
 
+### Contributing
+
+You'll need to install [Node.js](http://nodejs.org/) and [Bower](http://bower.io/) in order to run the test suite.
+
+- `git clone git@github.com:carrot/skrilla.git && cd skrilla` - clone the project
+- `npm install` - install node dependencies
+- `npm run bower` - install test suite's front end dependencies
+- `npm test` - run tests
+
 ### Roadmap
 
 This library is still in early development. The following features are on the near horizon:
