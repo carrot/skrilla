@@ -49,6 +49,8 @@
         result += "#{prop}:#{val};"
       result
 
+  Skrilla.version = '0.0.1'
+
   if (typeof define == 'function' && define.amd)
     define -> Skrilla
   else if (typeof module != 'undefined' && module.exports)

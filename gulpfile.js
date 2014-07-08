@@ -14,7 +14,7 @@ gulp.task('build', function() {
     .pipe(gulp.dest('./dist/'))
 });
 
-gulp.task('test', function() {
+gulp.task('test', ['build'], function() {
   gulp.src('dist/skrilla.js').pipe(gulp.dest('test'));
-  gulp.src('test/index.html').pipe(mocha());
+  gulp.src('test/test.html').pipe(mocha());
 });

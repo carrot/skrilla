@@ -93,6 +93,7 @@
     return Skrilla;
 
   })();
+  Skrilla.version = '0.0.1';
   if (typeof define === 'function' && define.amd) {
     return define(function() {
       return Skrilla;

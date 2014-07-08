@@ -47,6 +47,13 @@
         expect(window.after_init_test).to.equal(true)
       })
     });
+
+    describe('version', function() {
+      it('should return a version number', function () {
+        // make sure it's a string and looks like a version number
+        expect(Skrilla.version.split('.').length - 1).to.equal(2)
+      });
+    });
   });
 
   function set_up_test() {
