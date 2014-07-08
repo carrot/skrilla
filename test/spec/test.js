@@ -11,7 +11,7 @@
     describe('.init', function() {
       describe('applying data attributes', function() {
         it('applies "this" keyframes to the top level el', function() {
-          var test = (new Test).init()
+          (new Test).init()
           var data = document.querySelector('#test').dataset
           expect(data['1000']).to.equal('top:500px;background-size:100%;');
           expect(data['1500']).to.equal('top:150px;background-size:50%;');
@@ -19,13 +19,23 @@
         });
 
         it('applies keyframes for child els', function() {
-          var test = (new Test).init()
+          (new Test).init()
           var data = document.querySelector('#child').dataset
           expect(data['1000']).to.equal('top:500px;');
           expect(data['1500']).to.equal('top:150px;');
           expect(data['2000']).to.equal('top:-500px;');
         });
       });
+    });
+
+    describe('.beforeInit', function() {
+      it('is a before hook to .init', function () {
+        var before_init_test = false
+        var test = new Test
+        test.beforeInit = function () { window.before_init_test = true }
+        test.init()
+        expect(window.before_init_test).to.equal(true)
+      })
     });
   });
 

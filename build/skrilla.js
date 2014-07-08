@@ -24,10 +24,10 @@ Skrilla = (function() {
     }
   }
 
-  Skrilla.prototype.before_init = function() {};
+  Skrilla.prototype.beforeInit = function() {};
 
   Skrilla.prototype.init = function() {
-    this.before_init();
+    this.beforeInit();
     set_keyframes.call(this);
     if (this.fixed) {
       insert_placeholder.call(this);

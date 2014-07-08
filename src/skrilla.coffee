@@ -10,10 +10,10 @@ class Skrilla
     if not @fixed || is_mobile
       @duration = $(@el).height()
 
-  before_init: ->
+  beforeInit: ->
 
   init: ->
-    @before_init()
+    @beforeInit()
     set_keyframes.call(@)
     if @fixed then insert_placeholder.call(@)
     @set_arrow_listeners()
