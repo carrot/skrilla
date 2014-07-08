@@ -7,7 +7,8 @@ A clean interface to the [skrollr](https://github.com/Prinzhorn/skrollr) animati
 
 ### Dependencies
 
-[skrollr](https://github.com/prinzhorn/skrollr)
+- [jquery](http://jquery.com/) - want to eventually remove this dependency
+- [skrollr](https://github.com/prinzhorn/skrollr) - not an explicit dependency (skrollr is never called within skrilla), but this is designed to work with skrollr, so you'll definitely need it.
 
 ### Why should you care?
 
@@ -20,25 +21,24 @@ Skrilla solves this by grouping skrollr animated elements together so that their
 ### Usage
 
 ```coffee
-class ElephantMosaic extends Skrilla
+class HeaderAnimation extends Skrilla
   start: 1000
   end: 2000
-  el: '#main'
+  el: '#header'
 
-  before_init: ->
+  beforeInit: ->
     console.log('this is executed right before the data attributes are applied')
 
   keyframes:
-
-    '#elephant':
+    'this':
       0:
         display: 'block'
         top: '500px'
-        background-color: 'rgb(0,0,0)'
+        'background-color': 'rgb(0,0,0)'
 
       50:
         top: '150px'
-        background-color: 'rgb(255,255,255)'
+        'background-color': 'rgb(255,255,255)'
 
       100:
         display: 'none'
@@ -48,21 +48,21 @@ class ElephantMosaic extends Skrilla
       0:
         display: 'block'
         left: '-100px'
-        background-color: 'rgb(0,0,0)'
+        'background-color': 'rgb(0,0,0)'
 
       33:
         top: '10px'
-        background-color: 'rgb(255,255,255)'
+        'background-color': 'rgb(255,255,255)'
 
       100:
         display: 'none'
         left: '-200px'
 
-(new ElephantMosaic).init()
+(new HeaderAnimation).init()
 skrollr.init()
 ```
 
-Calling `(new ElephantMosaic).init()` here will apply these keyframes onto the elements through the data attributes interface to skrollr. Once initialized, **it's up to you** to call `skrollr.init()`, this is for maximum flexibility. Later down the road, I may integrate this into Skrilla itself and add hooks for before skrollr is intiialized.
+Calling `(new HeaderAnimation).init()` here will apply these keyframes onto the elements through the data attributes interface to skrollr. Once initialized, **it's up to you** to call `skrollr.init()`, this is for maximum flexibility. Later down the road, I may integrate this into Skrilla itself and add hooks for before skrollr is intiialized.
 
 ### Contributing
 

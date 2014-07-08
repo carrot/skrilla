@@ -31,6 +31,7 @@
   },
   "scripts": {
     "test": "gulp test",
+    "build": "gulp build",
     "bower": "(cd test && bower install)"
   }
 }

@@ -18,6 +18,7 @@
     </script>
 
     <!-- include source files here... -->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="skrilla.js"></script>
 
     <!-- include spec files here... -->
@@ -26,5 +27,9 @@
     <script>
       if (mochaPhantomJS) { mochaPhantomJS.run(); } else { mocha.run(); }
     </script>
+
+    <div id='test'>
+      <div id='child'></div>
+    </div>
 </body>
 </html>

@@ -74,7 +74,7 @@ Skrilla = (function() {
         for (percent in frames) {
           styles = frames[percent];
           abs = this.percent_to_absolute(percent);
-          if (el === 'self') {
+          if (el === 'this') {
             el = '';
           }
           _results1.push($("" + this.el + " " + el).attr("data-" + abs, concat_styles(styles)));

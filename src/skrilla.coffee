@@ -40,7 +40,7 @@ class Skrilla
     for el, frames of @keyframes
       for percent, styles of frames
         abs = @percent_to_absolute(percent)
-        if el == 'self' then el = ''
+        if el == 'this' then el = ''
         $("#{@el} #{el}").attr("data-#{abs}", concat_styles(styles))
 
   concat_styles = (styles) ->
