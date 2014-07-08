@@ -1,55 +1,61 @@
-class Skrilla
-  start: 0
-  end: 0
-  el: ''
-  fixed: false
-  keyframes: {}
+((window) ->
+  class Skrilla
+    start: 0
+    end: 0
+    el: ''
+    keyframes: {}
 
-  constructor: (args) ->
-    @[k] = v for k, v of args
-    if not @fixed || is_mobile
-      @duration = $(@el).height()
+    constructor: (args) ->
+      @[k] = v for k, v of args
 
-  before_init: ->
+    beforeInit: ->
 
-  init: ->
-    @before_init()
-    set_keyframes.call(@)
-    if @fixed then insert_placeholder.call(@)
-    @set_arrow_listeners()
+    afterInit: ->
 
-  animate_to: (pos, opts) ->
-    if not is_mobile
-      s = skrollr.get()
-      if s then s.animateTo(@percent_to_absolute(pos), opts)
+    init: ->
+      @beforeInit()
+      set_keyframes.call(@)
+      @set_arrow_listeners()
+      @afterInit()
 
-  percent_to_absolute: (percent) ->
-    ((percent * 0.01) * (@end - @start)) + @start
+    animate_to: (pos, opts) ->
+      if not is_mobile
+        s = skrollr.get()
+        if s then s.animateTo(@percent_to_absolute(pos), opts)
 
-  set_arrow_listeners: ->
-    if @arrow
-      $(@arrow).on 'click', =>
-        ga('send', 'event', @arrow, 'click')
-        @animate_to(@arrow_target, {duration: @arrow_duration})
+    percent_to_absolute: (percent) ->
+      ((percent * 0.01) * (@end - @start)) + @start
 
-  #
-  # private
-  #
+    set_arrow_listeners: ->
+      if @arrow
+        $(@arrow).on 'click', =>
+          ga('send', 'event', @arrow, 'click')
+          @animate_to(@arrow_target, {duration: @arrow_duration})
 
-  set_keyframes = ->
-    for el, frames of @keyframes
-      for percent, styles of frames
-        abs = @percent_to_absolute(percent)
-        if el == 'self' then el = ''
-        $("#{@el} #{el}").attr("data-#{abs}", concat_styles(styles))
+    #
+    # private
+    #
 
-  concat_styles = (styles) ->
-    result = ''
-    for prop, val of styles
-      result += "#{prop}:#{val};"
-    result
+    set_keyframes = ->
+      for el, frames of @keyframes
+        for percent, styles of frames
+          abs = @percent_to_absolute(percent)
+          if el == 'this' then el = ''
+          $("#{@el} #{el}").attr("data-#{abs}", concat_styles(styles))
 
-  insert_placeholder = ->
-    $(@el)
-      .addClass('fixed')
-      .after("<div id='#{@el}-placeholder' style='height: #{@duration}px;'></div>")
+    concat_styles = (styles) ->
+      result = ''
+      for prop, val of styles
+        result += "#{prop}:#{val};"
+      result
+
+  Skrilla.version = '0.0.1'
+
+  if (typeof define == 'function' && define.amd)
+    define -> Skrilla
+  else if (typeof module != 'undefined' && module.exports)
+    module.exports = Skrilla
+  else
+    window.Skrilla = Skrilla
+
+)(window)
