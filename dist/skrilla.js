@@ -26,35 +26,11 @@
     Skrilla.prototype.init = function() {
       this.beforeInit();
       set_keyframes.call(this);
-      this.set_arrow_listeners();
       return this.afterInit();
-    };
-
-    Skrilla.prototype.animate_to = function(pos, opts) {
-      var s;
-      if (!is_mobile) {
-        s = skrollr.get();
-        if (s) {
-          return s.animateTo(this.percent_to_absolute(pos), opts);
-        }
-      }
     };
 
     Skrilla.prototype.percent_to_absolute = function(percent) {
       return ((percent * 0.01) * (this.end - this.start)) + this.start;
-    };
-
-    Skrilla.prototype.set_arrow_listeners = function() {
-      if (this.arrow) {
-        return $(this.arrow).on('click', (function(_this) {
-          return function() {
-            ga('send', 'event', _this.arrow, 'click');
-            return _this.animate_to(_this.arrow_target, {
-              duration: _this.arrow_duration
-            });
-          };
-        })(this));
-      }
     };
 
     set_keyframes = function() {

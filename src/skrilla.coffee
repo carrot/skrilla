@@ -15,22 +15,10 @@
     init: ->
       @beforeInit()
       set_keyframes.call(@)
-      @set_arrow_listeners()
       @afterInit()
-
-    animate_to: (pos, opts) ->
-      if not is_mobile
-        s = skrollr.get()
-        if s then s.animateTo(@percent_to_absolute(pos), opts)
 
     percent_to_absolute: (percent) ->
       ((percent * 0.01) * (@end - @start)) + @start
-
-    set_arrow_listeners: ->
-      if @arrow
-        $(@arrow).on 'click', =>
-          ga('send', 'event', @arrow, 'click')
-          @animate_to(@arrow_target, {duration: @arrow_duration})
 
     #
     # private
